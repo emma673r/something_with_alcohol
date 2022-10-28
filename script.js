@@ -2,14 +2,45 @@ import { url, headers } from "./config.js";
 
 const f = document.querySelector("form");
 
-console.log(f.elements.bitter.value);
-console.log(f.elements);
+// console.log(f.elements.liquor);
+// console.log(f.elements);
 
-// f.addEventListener("submit", (e) => {
-//   e.preventDefault();
-// });
+f.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
 
+let liquorList = [];
+let ingredientList = [];
 
+let extraLiquor = f.elements.liquor[5].value.split("\n");
+
+let extraIngredient = f.elements.ingredient[8].value.split("\n");
+
+if (extraLiquor !== "") {
+  for (let i = 0; i < extraLiquor.length; i++) {
+    liquorList.push(extraLiquor[i]);
+    console.log(`extra liquors are `, extraLiquor[i]);
+  }
+}
+
+if (extraIngredient !== "") {
+  for (let i = 0; i < extraIngredient.length; i++) {
+    ingredientList.push(extraIngredient[i]);
+    console.log(`extra ingredients are `, extraIngredient[i]);
+  }
+}
+
+f.elements.liquor.forEach((liquor) => {
+  if (liquor.checked) {
+    liquorList.push(liquor.value);
+  }
+});
+
+f.elements.ingredient.forEach((ingredient) => {
+  if (ingredient.checked) {
+    ingredientList.push(ingredient.value);
+  }
+});
 
 async function getCocktails() {
   const options = {
@@ -59,6 +90,27 @@ async function init() {
   //   showData();
 }
 
+f.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const cocktail = {
+    cocktailName: f.elements.cocktailName.value,
+    color: f.elements.color.value,
+    glassType: f.elements.glassType.value,
+    liquor: liquorList,
+    ingredient: ingredientList,
+    bitterness: f.elements.bitterness.value,
+    method: f.elements.method.value.split("\n"),
+    price: f.elements.price.value,
+  };
+  addCocktail(cocktail);
+});
+
+console.log(`liquorlist is `, liquorList);
+console.log(`ingredientlist is `, ingredientList);
+
+// todo show data on site
+
 // async function showData() {
 //   const data = await getCocktails();
 //   console.log(data);
@@ -76,19 +128,3 @@ async function init() {
 //     document.querySelector("main").appendChild(copy);
 //   });
 // }
-
-f.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const cocktail = {
-    cocktailName: f.elements.cocktailName.value,
-    color: f.elements.color.value,
-    glassType: f.elements.glassType.value,
-    liquor: f.elements.liquor.value,
-    ingredient: f.elements.ingredient.value,
-    bitterness: f.elements.bitterness.value,
-    method: f.elements.method.value.split("\n"),
-    price: f.elements.price.value,
-  };
-  addCocktail(cocktail);
-});
