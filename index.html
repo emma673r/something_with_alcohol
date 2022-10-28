@@ -13,12 +13,12 @@
       <fieldset>
         <h2>Let's get you started</h2>
         <label for="cocktail-name">The name of your drink : *</label>
-        <input type="text" name="cocktail-name" id="cocktail-name" placeholder="ex. Negroni" required /><br />
+        <input type="text" name="cocktailName" id="cocktail-name" placeholder="ex. Negroni" required /><br />
         <label for="color">The color of your drink : *</label>
         <input type="color" name="color" id="color" required /><br />
 
         <label for="glass-type">Select the type of glass for your drink : *</label>
-        <select name="glass-type" id="glass-type" required>
+        <select name="glassType" id="glass-type" required>
           <option value="highball">Highball (Long drink)</option>
           <option value="rocks">Rocks (Whisky)</option>
           <option value="shot">Shot</option>
@@ -27,27 +27,17 @@
           <option value="wine">Wine</option>
           <option value="champagne">Champgane</option>
         </select>
-        <!-- ugly code -->
-        <!-- 
-        <p>Selet the type of glass for your drink :</p>
-        <input type="radio" id="highball" name="glass-type" value="highball" /> <label for="highball">Highball (Long drink)</label><br />
-        <input type="radio" id="rocks" name="glass-type" value="rocks" /> <label for="rocks">Rocks (Whisky)</label><br />
-        <input type="radio" id="shot" name="glass-type" value="shot" /><label for="shot">Shot</label><br />
-        <input type="radio" id="martini" name="glass-type" value="martini" /><label for="martini">Martini</label><br />
-        <input type="radio" id="cocktail" name="glass-type" value="cocktail" /><label for="cocktail">Cocktail</label><br />
-        <input type="radio" id="wine" name="glass-type" value="wine" /><label for="wine">Wine</label><br />
-        <input type="radio" id="champagne" name="glass-type" value="champagne" /><label for="champagne">Champagne</label><br /> -->
       </fieldset>
       <fieldset>
         <h2>Give us the deets</h2>
         <p>Liquor(s) necessary :</p>
-        <input type="checkbox" id="vodka" name="liquor-name" value="vodka" /> <label for="vodka">Vodka</label><br />
-        <input type="checkbox" id="whiskey" name="liquor-name" value="whisky" /> <label for="whisky">Whisky</label><br />
-        <input type="checkbox" id="gin" name="liquor-name" value="gin" /> <label for="gin">Gin</label><br />
-        <input type="checkbox" id="white-rum" name="liquor-name" value="white-rum" /> <label for="white-rum">White rum</label><br />
-        <input type="checkbox" id="tequila" name="liquor-name" value="tequila" /> <label for="tequila">Tequila</label><br /><input
+        <input type="checkbox" id="vodka" name="liquor" value="vodka" /> <label for="vodka">Vodka</label><br />
+        <input type="checkbox" id="whiskey" name="liquor" value="whisky" /> <label for="whisky">Whisky</label><br />
+        <input type="checkbox" id="gin" name="liquor" value="gin" /> <label for="gin">Gin</label><br />
+        <input type="checkbox" id="white-rum" name="liquor" value="white-rum" /> <label for="white-rum">White rum</label><br />
+        <input type="checkbox" id="tequila" name="liquor" value="tequila" /> <label for="tequila">Tequila</label><br /><input
           type="text"
-          name="liquor-name"
+          name="liquor"
           value=""
           id="other-liquor"
           placeholder="other liquor ?"
@@ -62,20 +52,21 @@
         <input type="checkbox" id="soda" name="ingredient" value="soda" /> <label for="soda">Soda</label><br />
         <input type="checkbox" id="cherry" name="ingredient" value="cherry" /> <label for="cherry">Cherry</label><br />
         <input type="checkbox" id="mint" name="ingredient" value="mint" /> <label for="mint">Mint</label><br />
-        <input type="text" name="ingr-name" value="" id="other-ingr" placeholder="other ingredient ?" /> <br />
+        <input type="text" name="ingredient" value="" id="other-ingr" placeholder="other ingredient ?" /> <br />
         <hr />
-        <label for="volume">How big is the coktail (in cl) ? </label><input type="number" name="volume" id="volume" min="0" /><br />
         <p>Is it bitter or sweet ? *</p>
-        <label for="bitter">Bitter</label><input required type="range" name="bitter" id="bitterness" /><label for="bitter">Sweet</label>
+        <label for="bitterness">Sweet</label>
+        <input type="range" name="bitterness" min="0" max="5" value="2.5" step="0.5" />
+        <label for="bitterness">Bitter</label>
       </fieldset>
       <fieldset>
         <h2>And nearly done now</h2>
         <label for="method">Method : *</label>
         <textarea required type="text" rows="4" cols="50" name="method" id="method" placeholder="First you ... and then you..."></textarea><br />
         <hr />
-        <label for="price">How much do you think it should cost ?</label><input type="number" name="price" id="price" min="0" step="0.01" /><br />
+        <label for="price">How much do you think it should cost ? </label><input type="text" name="price" id="price" min="0" /><br />
       </fieldset>
-      <input type="submit" value="submit" />
+      <input id="submit" type="submit" value="submit" />
     </form>
     <style>
       input,
@@ -94,5 +85,6 @@
         background-color: hsl(145, 63%, 49%, 0.2);
       }
     </style>
+    <script type="module" src="script.js"></script>
   </body>
 </html>
